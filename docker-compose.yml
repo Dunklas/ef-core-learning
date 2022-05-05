@@ -10,3 +10,12 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
       - ${HOME}/.aspnet/https:/https/:ro
+  db:
+    image: postgres:14.2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: super-secret
+      POSTGRES_USER: super-user
+      POSTGRES_DB: petio
+    ports:
+      - 8002:5432
