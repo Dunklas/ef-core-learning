@@ -14,3 +14,10 @@ In order to get a good certificate that my OS (Arch Linux) trusts, I used one of
 For Mac or Windows you should be able to use the `dotnet dev-certs https` command:
  - `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx`
  - `dotnet dev-certs https --trust`
+
+## Make db schema changes
+1. Make desired changes to models or db context
+2. Run `dotnet ef migrations add NameOfMyMigration`
+3. Run `dotnet ef database update`
+
+Note that you must have Entity Framework CLI Tools installed for this.
