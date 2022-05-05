@@ -2,13 +2,12 @@
 
 A sample app containing a pet-related API, with the purpose of me learning entity framework.
 
-# Getting started
-
+## Getting started
 1. Run `docker-compose up` from the repository root.
 2. Make some requests!
-  - `curl https://localhost:8001/weatherForecast`
+   - `curl https://localhost:8001/weatherForecast`
 
-Note that you must have a self-signed certificate available in `~/.aspnet/https/aspnetapp.pfx`. It must be in pfx-format and it must contain a private key.
+**Note** that you must have a self-signed certificate available in `~/.aspnet/https/aspnetapp.pfx`. It must be in pfx-format and it must contain a private key.
 
 In order to get a good certificate that my OS (Arch Linux) trusts, I used one of the scripts [here](https://github.com/BorisWilhelms/create-dotnet-devcert/tree/main/scripts). I did a slight modification of it in order to obtain a pfx-file that contains a private key.
 
