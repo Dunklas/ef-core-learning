@@ -1,11 +1,9 @@
+using ef_core_learning.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
@@ -23,3 +21,14 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllers();
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
+    services.AddDbContext<PetioDbContext>(options =>
+    {
+        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"));
+    });
+}

@@ -8,8 +8,11 @@ services:
       - ASPNETCORE_URLS=https://+
       - ASPNETCORE_HTTPS_PORT=8001
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - DB_CONNECTION_STRING=host=db:5432;database=petio;user id=super-user;password=super-secret;
     volumes:
       - ${HOME}/.aspnet/https:/https/:ro
+    depends_on:
+      - db
   db:
     image: postgres:14.2
     restart: always
