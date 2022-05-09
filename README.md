@@ -4,7 +4,8 @@ A sample app containing a pet-related API, with the purpose of me learning entit
 
 ## Getting started
 1. Run `docker-compose rm -f && docker-compose up --build --renew-anon-volumes` from the repository root.
-2. Make some requests!
+2. Apply db migrations (see below)
+3. Make some requests!
    - `curl https://localhost:8001/weatherForecast`
 
 **Note** that you must have a self-signed certificate available in `~/.aspnet/https/aspnetapp.pfx`. It must be in pfx-format and it must contain a private key.
