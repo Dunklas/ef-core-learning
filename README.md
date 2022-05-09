@@ -9,10 +9,10 @@ A sample app containing a pet-related API, with the purpose of me learning entit
 
 **Note** that you must have a self-signed certificate available in `~/.aspnet/https/aspnetapp.pfx`. It must be in pfx-format and it must contain a private key.
 
-In order to get a good certificate that my OS (Arch Linux) trusts, I used one of the scripts [here](https://github.com/BorisWilhelms/create-dotnet-devcert/tree/main/scripts). I did a slight modification of it in order to obtain a pfx-file that contains a private key.
+In order to get a self-signed certificate that my OS (Arch Linux) trusts, I used one of the scripts [here](https://github.com/BorisWilhelms/create-dotnet-devcert/tree/main/scripts). After running the script, you may export the self-signed certificate by running `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p ""`.
 
-For Mac or Windows you should be able to use the `dotnet dev-certs https` command:
- - `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx`
+For Mac or Windows you should just be able to use the `dotnet dev-certs https` command:
+ - `dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p ""`
  - `dotnet dev-certs https --trust`
 
 ## Make db schema changes
