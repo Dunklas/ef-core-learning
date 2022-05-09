@@ -3,7 +3,7 @@
 A sample app containing a pet-related API, with the purpose of me learning entity framework.
 
 ## Getting started
-1. Run `docker-compose up` from the repository root.
+1. Run `docker-compose rm -f && docker-compose up --build --renew-anon-volumes` from the repository root.
 2. Make some requests!
    - `curl https://localhost:8001/weatherForecast`
 
@@ -17,7 +17,36 @@ For Mac or Windows you should just be able to use the `dotnet dev-certs https` c
 
 ## Make db schema changes
 1. Make desired changes to models or db context
-2. Run `dotnet ef migrations add NameOfMyMigration`
-3. Run `dotnet ef database update`
+2. Start the local database using `docker-compose rm -f && docker-compose up --build --renew-anon-volumes`
+3. Generate migration script for new change:
+
+```
+DB_CONNECTION_STRING="host=localhost:8002;database=petio;user id=super-user;password=super-secret;" \
+   dotnet ef migrations add NAME-OF-MY-MIGRATION 
+```
+
+4. Verify that you have pending migration(s):
+```
+DB_CONNECTION_STRING="host=localhost:8002;database=petio;user id=super-user;password=super-secret;" \
+   dotnet ef migrations list 
+```
+
+5. Apply migration(s):
+```
+DB_CONNECTION_STRING="host=localhost:8002;database=petio;user id=super-user;password=super-secret;" \
+   dotnet ef database update 
+```
+
+6. If you need to rollback migration(s):
+```
+DB_CONNECTION_STRING="host=localhost:8002;database=petio;user id=super-user;password=super-secret;" \
+   dotnet ef database update NAME-OF-MIGRATION-TO-ROLLBACK-TO
+```
+
+7. If you want to remove last migration:
+```
+DB_CONNECTION_STRING="host=localhost:8002;database=petio;user id=super-user;password=super-secret;" \
+   dotnet ef migrations remove
+```
 
 Note that you must have Entity Framework CLI Tools installed for this.
